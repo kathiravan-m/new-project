@@ -17,9 +17,11 @@ class Auth
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!Session::get('user_id')) {
+  
+        if (!Session::get('user_id')) {  
             return redirect('login')->with('error', 'Login to Access.');
         }
+        
         return $next($request);
     }
 }

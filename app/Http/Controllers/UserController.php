@@ -60,6 +60,19 @@ class UserController extends Controller
             return back()->with('error', 'invalid user');
         }
     }
+    public function fileUpload(Request $request)
+    { 
+   
+        $request->validate([
+            'file' => 'required',
+        ]);
+        if ($files = $request->file('file')){
+        $fileName = time() . '.' . $request->file->extension();
+        $request->file->move(public_path('uploads'), $fileName);
 
+
+        return response()->json(['body'=>$fileName]);
+    }
   
 }
+   }

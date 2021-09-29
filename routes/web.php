@@ -25,3 +25,6 @@ Route::post('/login-user',[UserController::class,'insertLoginUser'])->name('logi
 
 // 
 Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard')->middleware('user_auth');
+
+// 
+Route::post('/file-upload',[UserController::class,'fileUpload']);
