@@ -1,9 +1,9 @@
 @component('mail::message')
 hai Welcome Buddy..!!
 Name:
-{{$value['name']}}
+{{$value['name']}}<br>
 e-mail:
-{{$value['email']}}
+{{$value['email']}}<br>
 Password:
 {{$value['password']}}
 

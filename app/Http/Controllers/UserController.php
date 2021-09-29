@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
+use App\Jobs\SendEmailJob;
 
 class UserController extends Controller
 { 
@@ -41,9 +42,11 @@ class UserController extends Controller
         'confirmpassword' => $request->confirmpassword,
         'phonenumber' => $request->phonenumber,
     ]);
+        $detail = $this->user->where('email', $request->email)->first();
+        dispatch(new SendEmailJob($detail));
     return redirect('/dashboard');
   }
-  
+
   public function insertLoginUser(Request $request){
         $request->validate([
             'email' => 'required ',
