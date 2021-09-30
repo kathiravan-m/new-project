@@ -44,6 +44,7 @@ class UserController extends Controller
     ]);
         $detail = $this->user->where('email', $request->email)->first();
         dispatch(new SendEmailJob($detail));
+        Session::put('user_id', $detail->id);
     return redirect('/dashboard');
   }
 
@@ -69,8 +70,6 @@ class UserController extends Controller
         if ($files = $request->file('file')){
         $fileName = time() . '.' . $request->file->extension();
         $request->file->move(public_path('uploads'), $fileName);
-
-
         return response()->json(['body'=>$fileName]);
     }
   
