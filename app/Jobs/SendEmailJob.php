@@ -16,7 +16,7 @@ class SendEmailJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
     
     protected $detail;
-    /**
+    /*
      * Create a new job instance.
      *
      * @return void
@@ -26,7 +26,7 @@ class SendEmailJob implements ShouldQueue
         $this->detail =$detail;
     }
 
-    /**
+    /*
      * Execute the job.
      *
      * @return void

@@ -17,6 +17,8 @@ class PostServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/resources/lang', 'post');
         $this->loadViewsFrom(__DIR__.'/resources/view', 'post');
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+        // $this->registerFactoriesFrom(__DIR__ . '/database/factories');
+        // $this->loadSeedsFrom(__DIR__ . '/database/seeders');  
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         if ($this->app->runningInConsole()) {
@@ -53,8 +55,8 @@ class PostServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/config/config.php', 'post');
 
         // Register the main class to use with the facade
-        //  $this->app->singleton('post', function () {
-        //  return new Post;
-        //  });
+         $this->app->singleton('post', function () {
+        //  return new post;
+         });
     }
 }
